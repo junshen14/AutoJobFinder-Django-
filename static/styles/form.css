@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  font-family: "Circular-Loom" !important;
+}
+
+.formContainer {
+  padding: 50px;
+}
+
+.title {
+  text-decoration: underline;
+  font-size: 47px;
+}
+
+.formLabel {
+  font-size: 20px;
+}
