@@ -8,6 +8,7 @@ class ResumeForm(ModelForm):
         model = Resume
         fields = '__all__'
         labels = {
+            'category': 'Target Job Category :',
             'birthdate': 'Your Birth Date : ',
             'name': 'Name : ',
             'about': 'Introduce about yourself : ',
@@ -27,6 +28,7 @@ class ResumeForm(ModelForm):
             'reference': 'Reference : '
         }
         widgets = {
+            'category':  forms.Select(attrs={'class': 'form-control'}),
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'about': forms.Textarea(attrs={'class': 'form-control'}),
             'birthdate': forms.DateInput(format=('%d-%m-%Y'),

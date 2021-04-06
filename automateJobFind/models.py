@@ -3,8 +3,16 @@ from django.db import models
 
 # Create your models here.
 
+JOB_CATEGORY = (('Accounting and Finance', 'Accounting and Finance'),
+                ('Art/ Media/ Communication', 'Art/ Media/ Communication'),
+                ('Computer/Information Technology',
+                 'Computer/Information Technology'),
+                ('Engineering', 'Engineering'))
+
 
 class Resume(models.Model):
+    category = models.CharField(
+        max_length=200, choices=JOB_CATEGORY, default='Accounting and Finance')
     about = models.TextField()
     name = models.CharField(max_length=200, default="")
     birthdate = models.DateField(
