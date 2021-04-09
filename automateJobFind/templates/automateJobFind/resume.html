@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Resume Generator</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static '/css/stylesheet.css' %}"
+    />
+  </head>
+  <body>
+    <div class="container personal_info">
+      <h1 id="Name">John Smith</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2">Contact :</div>
+          <div class="col-sm-3">{{ post.name }}</div>
+          <div class="col-sm-2">Birthdate :</div>
+          <div class="col-sm-3">{{ post.birthdate }}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">Email :</div>
+          <div class="col-sm-3">{{ post.email }}</div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">Address :</div>
+          <div class="col-sm-6">{{ post.address }}</div>
+        </div>
+        <p class="intro">{{ post.about }}</p>
+      </div>
+    </div>
+    <div class="container experience">
+      <h2>Experience</h2>
+      <div class="row">
+        <div class="col-sm-12">{{ post.experience1 }}</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">{{ post.experience2 }}</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">{{ post.experience3 }}</div>
+      </div>
+    </div>
+    <div class="container achievement">
+      <h2>Achievement</h2>
+      <div class="row">
+        <div class="col-sm-12">{{ post.achievement1 }}</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">{{ post.achievement2 }}</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">{{ post.achievement3 }}</div>
+      </div>
+    </div>
+    <div class="container skills">
+      <h2>Skills</h2>
+      <div class="row">
+        <div class="col-sm-12">{{ post.skills }}</div>
+      </div>
+    </div>
+    <div class="container certificate">
+      <h2>Certificate</h2>
+      <div class="row">
+        <div class="col-sm-12">{{ post.certificate1 }}</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">{{ post.certificate2 }}</div>
+      </div>
+    </div>
+    <div class="container reference">
+      <h2>Reference</h2>
+      <div class="row">
+        <div class="col-sm-12">{{ post.reference }}</div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,33 +1,18 @@
 {% extends 'automateJobFind/main.html' %} {% block content %}
 <div class="formContainer">
-  <h1>Personal Information</h1>
-  <p>Name : {{post.name}}</p>
-  <p>Introduction : {{post.about}}</p>
-  <p>Birthdate : {{post.birthdate}}</p>
-  <p>Contact : {{post.contact}}</p>
-  <p>Address : {{post.address}}</p>
-  <p>Email : {{post.email}}</p>
-  <p>Achievement 1: {{post.achievement1}}</p>
-  <p>Achievement 2: {{post.achievement2}}</p>
-  <p>Achievement 3: {{post.achievement3}}</p>
-  <p>Education Certificate 1: {{post.certificate1}}</p>
-  <p>Education Certificate 2: {{post.certificate2}}</p>
-  <p>Working Experience 1: {{post.experience1}}</p>
-  <p>Working Experience 2: {{post.experience2}}</p>
-  <p>Working Experience 3: {{post.experience3}}</p>
-  <p>Skills : {{post.skills}}</p>
-  <p>Interest : {{post.interest}}</p>
-  <p>Reference : {{post.reference}}</p>
-  <br />
-  <h1>Job Recommended</h1>
-  {% for job in joblist%}
-  <h3>{{job.company}}</h3>
-  <p>Job Position : {{job.position}}</p>
-  <p>Location : {{job.location}}</p>
-  <p>Job Requirement : {{job.requirement}}</p>
-  <p>Email : {{job.email}}</p>
-  <p>phone : {{job.phone}}</p>
-  {% endfor %}
+  <form method="POST">
+    <h1>Job Recommended</h1>
+    {% csrf_token %} {% for job in joblist%}
+    <h3>{{job.company}}</h3>
+    <p>Job Position : {{job.position}}</p>
+    <p>Location : {{job.location}}</p>
+    <p>Job Requirement : {{job.requirement}}</p>
+    <p>Email : {{job.email}}</p>
+    <p>phone : {{job.phone}}</p>
+
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Submit Form & Email</button>
+  </form>
 </div>
 
 {% endblock %}

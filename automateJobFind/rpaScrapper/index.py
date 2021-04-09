@@ -1,4 +1,5 @@
 from os import link
+import os
 from bs4 import BeautifulSoup
 from .scrap_job_page import scrap_job_page
 
@@ -14,9 +15,12 @@ Job Object Structure
     phone number
 """
 
+DIRNAME = os.path.dirname(__file__)
+JOBPAGE_FOLDER = DIRNAME + "/joblistSite/index.html"
+
 
 def get_job_list():
-    with open("C:\\Users\\Junshen\\OneDrive\\Desktop\\AssignmentRPA\\automateJobFind\\rpaScrapper\\joblistSite\\index.html") as main_page:
+    with open(JOBPAGE_FOLDER) as main_page:
         soup = BeautifulSoup(main_page, 'html.parser')
 
     anchor_list = soup.find_all('a')

@@ -1,7 +1,9 @@
 import re
+import os
 from bs4 import BeautifulSoup
 
-JOBPAGE_FOLDER = "C:\\Users\\Junshen\\OneDrive\\Desktop\\AssignmentRPA\\automateJobFind\\rpaScrapper\\joblistSite\\JobPage"
+DIRNAME = os.path.dirname(__file__)
+JOBPAGE_FOLDER = DIRNAME + "/joblistSite/jobPage"
 
 
 def scrap_job_page(job_page):
