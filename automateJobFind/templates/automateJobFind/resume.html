@@ -18,63 +18,87 @@
   </head>
   <body>
     <div class="container personal_info">
-      <h1 id="Name">John Smith</h1>
+      <h1 id="Name">{{post.name}}</h1>
+      <h2 style="text-decoration: underline; font-weight: bold">
+        Introduction
+      </h2>
+      <p class="intro">{{ post.about }}</p>
       <div class="container">
         <div class="row">
-          <div class="col-sm-2">Contact :</div>
-          <div class="col-sm-3">{{ post.name }}</div>
-          <div class="col-sm-2">Birthdate :</div>
-          <div class="col-sm-3">{{ post.birthdate }}</div>
+          <div class="col-sm-2">Contact : {{post.contact}}</div>
+          <div class="col-sm-2">Birthdate : {{post.birthdate}}</div>
         </div>
         <div class="row">
-          <div class="col-sm-2">Email :</div>
-          <div class="col-sm-3">{{ post.email }}</div>
+          <div class="col-sm-2">Email : {{post.email}}</div>
         </div>
         <div class="row">
-          <div class="col-sm-2">Address :</div>
-          <div class="col-sm-6">{{ post.address }}</div>
+          <div class="col-sm-2">Address : {{post.address}}</div>
         </div>
-        <p class="intro">{{ post.about }}</p>
       </div>
     </div>
     <div class="container experience">
-      <h2>Experience</h2>
+      <h2 style="text-decoration: underline; font-weight: bold">
+        Working Experience
+      </h2>
+      {% if post.experience1 %}
       <div class="row">
-        <div class="col-sm-12">{{ post.experience1 }}</div>
+        <div class="col-sm-12">
+          Working Experience 1 : {{ post.experience1 }}
+        </div>
       </div>
+      {% endif %} {% if post.experience2 %}
       <div class="row">
-        <div class="col-sm-12">{{ post.experience2 }}</div>
+        <div class="col-sm-12">
+          Working Experience 2 : {{ post.experience2 }}
+        </div>
       </div>
+      {% endif %} {% if post.experience3 %}
       <div class="row">
-        <div class="col-sm-12">{{ post.experience3 }}</div>
+        <div class="col-sm-12">
+          Working Experience 3 : {{ post.experience3 }}
+        </div>
       </div>
+      {% endif %}
     </div>
     <div class="container achievement">
-      <h2>Achievement</h2>
+      <h2 style="text-decoration: underline; font-weight: bold">Achievement</h2>
+      {% if post.achievement1 %}
       <div class="row">
-        <div class="col-sm-12">{{ post.achievement1 }}</div>
+        <div class="col-sm-12">Achievement 1 : {{ post.achievement1 }}</div>
       </div>
+      {% endif %} {% if post.achievement2 %}
       <div class="row">
-        <div class="col-sm-12">{{ post.achievement2 }}</div>
+        <div class="col-sm-12">Achievement 2 : {{ post.achievement2 }}</div>
       </div>
+      {% endif %} {% if post.achievement3 %}
       <div class="row">
-        <div class="col-sm-12">{{ post.achievement3 }}</div>
+        <div class="col-sm-12">Achievement 3 : {{ post.achievement3 }}</div>
       </div>
     </div>
+    {% endif %}
     <div class="container skills">
-      <h2>Skills</h2>
+      <h2 style="text-decoration: underline; font-weight: bold">Skills</h2>
       <div class="row">
         <div class="col-sm-12">{{ post.skills }}</div>
       </div>
     </div>
     <div class="container certificate">
-      <h2>Certificate</h2>
+      <h2 style="text-decoration: underline; font-weight: bold">
+        Education Certificate
+      </h2>
+      {% if post.certificate1 %}
       <div class="row">
-        <div class="col-sm-12">{{ post.certificate1 }}</div>
+        <div class="col-sm-12">
+          Education Certificate 1 : {{ post.certificate1 }}
+        </div>
       </div>
+      {% endif %} {% if post.certificate2 %}
       <div class="row">
-        <div class="col-sm-12">{{ post.certificate2 }}</div>
+        <div class="col-sm-12">
+          Education Certificate 2 : {{ post.certificate2 }}
+        </div>
       </div>
+      {% endif %}
     </div>
     <div class="container reference">
       <h2>Reference</h2>

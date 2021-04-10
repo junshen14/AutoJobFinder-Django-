@@ -30,7 +30,7 @@ def home(request):
 class GeneratePdf(View):
 
     def get(self, request, *args, **kwargs):
-        output_filename = "test1.pdf"
+        output_filename = (request.session['_old_post'])["name"]+"_.pdf"
         data = {'post': request.session['_old_post']}
         template = get_template(JOBPAGE_FOLDER)
         html = template.render(data)
@@ -48,7 +48,7 @@ class GeneratePdf(View):
 def resume(request):
     old_post = request.session.get('_old_post')
     context = {'post': old_post}
-    return render(request, 'automateJobFind\resume.html', context)
+    return render(request, 'automateJobFind\\resume.html', context)
 
 
 def list(request):
@@ -75,22 +75,16 @@ def list(request):
     context = {'joblist': secondFilter, 'post': old_post}
     if request.method == 'POST':
         for eachList in secondFilter:
-            send_mail(old_post["name"], eachList["email"], "Job Application",
-                      "Hello world", [DIRNAME+"/../test1.pdf"])
+            send_mail(f"{old_post['name']} <{old_post['email']}>", old_post["email"], "Job Application",
+                      "Dear Sir/Madam,\nI am " +
+                      old_post["name"]+" who are majoring in " +
+                      old_post["category"]
+                      + ". I would like to apply for the " +
+                      eachList["position"] +
+                      " in  your company (" + eachList["company"] + "). "
+                      + "Attached is my resume for your perusal. I look forward to hearing back from you. Please feel free to contact me with any questions. You can reach me by phone: "
+                      + old_post["contact"] + " or " + old_post["email"] +
+                      ".\n\nThank you for your consideration.\n\nSincerely,\n"
+                      + old_post["name"], [DIRNAME+"/../"+old_post["name"]+"_.pdf"])
+        return redirect('/')
     return render(request, 'automateJobFind/joblist.html', context)
-
-# class GeneratePdf(View):
-#     def get(self, request, *args, **kwargs):
-#         data = {'post': request.session['_old_post']}
-#         template = get_template(JOBPAGE_FOLDER)
-#         html = template.render(data)
-#         pdf = render_to_pdf(JOBPAGE_FOLDER, data)
-#         if pdf:
-#             response = HttpResponse(pdf, content_type='application/pdf')
-#             filename = "Resume_%s.pdf" % ("12341231")
-#             content = "inline; filename='%s'" % (filename)
-#             download = request.GET.get("download")
-#             content = "attachment; filename=%s" % (filename)
-#             response['Content-Disposition'] = content
-#             return response
-#         return HttpResponse("Not found")
